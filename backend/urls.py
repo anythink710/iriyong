@@ -7,6 +7,14 @@ from .djangoapps.main import views as MainViews
 urlpatterns = [
     # main-url
     url('checklist$', MainViews.checklist, name='checklist'),
+
+    url('apiChecklistCreate$', MainViews.apiChecklistCreate, name='apiChecklistCreate'),
+    url('apiChecklistDelete$', MainViews.apiChecklistDelete, name='apiChecklistDelete'),
+    url('apiChecklistComplete$', MainViews.apiChecklistComplete, name='apiChecklistComplete'),
+
+    url('checklist$', MainViews.checklist, name='checklist'),
+    url('checklist$', MainViews.checklist, name='checklist'),
+
     url('memory$', MainViews.memory, name='memory'),
     url('movie$', MainViews.movie, name='movie'),
     url('movieDetail$', MainViews.movieDetail, name='movieDetail'),

@@ -1,9 +1,15 @@
-use main;
-
-create table sample_user(
-id int auto_increment primary key,
-email varchar(100),
-password varchar(100),
-regist_date datetime default now(),
-modify_date datetime default null
+create table iriyong_secretkey(
+	id int primary key auto_increment,
+    secret_key varchar(100) not null
 );
+
+create table iriyong_todo(
+	id int primary key auto_increment,
+    content varchar(300),
+    complete varchar(10) default 'N',
+    delete_yn varchar(10) default 'N',
+    regist_date datetime default now()
+);
+
+ALTER TABLE iriyong_secretkey convert to charset utf8;
+ALTER TABLE iriyong_todo convert to charset utf8;

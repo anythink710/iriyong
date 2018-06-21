@@ -34,8 +34,90 @@ def index(request):
     return render(request, 'backend/index.html', context)
 
 def checklist(request):
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            select max(id)
+            FROM iriyong_todo
+        '''
+        cur.execute(query)
+        max_id = cur.fetchall()
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            select id, content,
+            DATE_FORMAT(regist_date, "%Y.%c.%e") as regist_date
+            FROM iriyong_todo
+            where complete = 'N'
+            and delete_yn = 'N'
+            order by id desc
+        '''
+        cur.execute(query)
+        no_list = cur.fetchall()
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            select id, content,
+            DATE_FORMAT(regist_date, "%Y.%c.%e") as regist_date
+            FROM iriyong_todo
+            where complete = 'Y'
+            and delete_yn = 'N'
+            order by id desc
+        '''
+        cur.execute(query)
+        ok_list = cur.fetchall()
+
+    print(ok_list)
+    print(no_list)
+
     context = {}
+    context['ok_list'] = ok_list
+    context['no_list'] = no_list
+    context['max_id'] = int(max_id[0][0]) + 1
     return render(request, 'backend/checklist.html', context)
+
+def apiChecklistCreate(request):
+
+    content = request.POST.get('content')
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            insert into iriyong_todo(content)
+            value('{content}')
+        '''.format(content=content)
+        cur.execute(query)
+
+    return JsonResponse({'return':'success'})
+
+def apiChecklistDelete(request):
+
+    boardId = request.POST.get('boardId')
+    boardId = boardId.replace('post','')
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            update iriyong_todo
+            set delete_yn = 'Y'
+            where id = '{boardId}'
+        '''.format(boardId=boardId)
+        cur.execute(query)
+
+    return JsonResponse({'return':'success'})
+
+def apiChecklistComplete(request):
+
+    boardId = request.POST.get('boardId')
+    boardId = boardId.replace('post','')
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            update iriyong_todo
+            set complete = 'Y'
+            where id = '{boardId}'
+        '''.format(boardId=boardId)
+        cur.execute(query)
+
+    return JsonResponse({'return':'success'})
 
 def memory(request):
     context = {}
