@@ -41,9 +41,25 @@
 }
 
 .marginleft5{
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .margintop10{
   margin-top: 10px;
+}
+
+.margintop20{
+  margin-top: 20px;
+}
+
+.admin-menu{
+  font-size: 90%;
+  margin-top: 10px;
+}
+
+.dropzone{
+    border: 2px dashed #0087F7;
+    border-radius: 5px;
+    background: white;
+    padding: 30px;
 }

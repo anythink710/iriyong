@@ -16,7 +16,11 @@ urlpatterns = [
     url('checklist$', MainViews.checklist, name='checklist'),
 
     url('memory$', MainViews.memory, name='memory'),
+
     url('movie$', MainViews.movie, name='movie'),
-    url('movieDetail$', MainViews.movieDetail, name='movieDetail'),
+    url('movieDetail/(?P<pageId>[0-9]{1,4})$', MainViews.movieDetail, name='movieDetail'),
+
+    url('admin$', MainViews.admin, name='admin'),
+
     url('$', MainViews.index, name='index'),
 ]

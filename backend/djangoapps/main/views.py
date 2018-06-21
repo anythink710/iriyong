@@ -67,9 +67,6 @@ def checklist(request):
         cur.execute(query)
         ok_list = cur.fetchall()
 
-    print(ok_list)
-    print(no_list)
-
     context = {}
     context['ok_list'] = ok_list
     context['no_list'] = no_list
@@ -123,10 +120,39 @@ def memory(request):
     context = {}
     return render(request, 'backend/memory.html', context)
 
-def movie(request):
+def admin(request):
     context = {}
+    return render(request, 'backend/admin.html', context)
+
+def movie(request):
+
+    with connections['default'].cursor() as cur:
+        query = '''
+            SELECT
+                id,
+                movie_name,
+                movie_subject,
+                movie_makedate,
+                movie_runtime,
+                movie_contry,
+                movie_url,
+                movie_sumnail
+            FROM
+                iriyong_movie
+            WHERE
+                delete_yn = 'N'
+            ORDER BY id DESC
+        '''
+        cur.execute(query)
+        movie_list = cur.fetchall()
+
+    context = {}
+    context['movie_list'] = movie_list
     return render(request, 'backend/movie.html', context)
 
-def movieDetail(request):
+def movieDetail(request, pageId):
+
+    print("pageId = ", pageId)
+
     context = {}
     return render(request, 'backend/movieDetail.html', context)

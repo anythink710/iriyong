@@ -16,11 +16,10 @@
             </div>
           </div>
 
-
-
             <div class="row" style="padding:15px;">
 
-            <a class="pagerLink" href="/movieDetail">
+            % for item in movie_list:
+            <a class="pagerLink" href="/movieDetail/${item[0]}">
             <div class="card col-sm" style="padding:5px; margin-bottom: 10px;">
               <div class="container">
                 <div class="row">
@@ -29,21 +28,23 @@
                   </div>
                   <div class="col">
                     <div class="subdisplay">영화명</div>
-                    <div class="fontsize90">날 보러와요</div>
+                    <div class="fontsize90">${item[1]}</div>
                     <div class="subdisplay">장르</div>
-                    <div class="fontsize90">미스터리, 스릴러</div>
+                    <div class="fontsize90">${item[2]}</div>
                     <div class="subdisplay">개봉일</div>
-                    <div class="fontsize90">2016.04.07 개봉</div>
+                    <div class="fontsize90">${item[3]} 개봉</div>
                     <div class="subdisplay">상영시간</div>
-                    <div class="fontsize90">91분</div>
+                    <div class="fontsize90">${item[4]}분</div>
                     <div class="subdisplay">국가</div>
-                    <div class="fontsize90">한국</div>
+                    <div class="fontsize90">${item[5]}</div>
                   </div>
                 </div>
               </div>
             </div>
             </a>
+            % endfor
 
+            <!--
             <a class="pagerLink" href="/movieDetail">
             <div class="card col-sm" style="padding:5px; margin-bottom: 10px;">
               <div class="container">
@@ -91,6 +92,7 @@
               </div>
             </div>
             </a>
+            -->
 
             </div>
 

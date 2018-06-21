@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <%include file="common_header.html"/>
+  <body>
+  <%include file="common_menu.html"/>
+
+  <div class="csrf_token" style="display:none">${csrf_token}</div>
+
+  <div class="probootstrap-main">
+    <!-- ... contents ... -->
+    <section style="padding-left: 5px; padding-right: 5px;">
+      <div class="probootstrap-text">
+        <div class="probootstrap-inner probootstrap-animate">
+
+          <div class="card" style="margin-bottom: 15px;">
+            <div class="card-body">
+              관리자 페이지 (admin)
+            </div>
+          </div>
+          <div class="card" style="padding:15px;">
+
+            <h4>영화 업로드</h4>
+            <hr>
+
+            <div class="admin-menu">영화 제목</div>
+            <input type="text" class="form-control" id="movie_name" placeholder="신고질라">
+
+            <div class="admin-menu">영화 장르</div>
+            <input type="text" class="form-control" id="movie_name" placeholder="SF, 액션, 드라마">
+
+            <div class="admin-menu">영화 개봉일</div>
+            <input type="text" class="form-control" id="movie_name" placeholder="2017.03.08">
+
+            <div class="admin-menu">영화 상영시간</div>
+            <input type="text" class="form-control" id="movie_name" placeholder="120">
+
+            <div class="admin-menu">영화 제작국가</div>
+            <input type="text" class="form-control" id="movie_name" placeholder="일본">
+
+            <div class="admin-menu">영화 링크</div>
+            <input type="text" class="form-control" id="movie_name" placeholder="/media/sample.mp4">
+
+            <div class="admin-menu">썸네일</div>
+
+            <form action="/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
+            <div class="dz-message needsclick">
+              파일을 올려놓으세요<br>
+              <span class="note needsclick">썸네일을 어떤 걸로 등록하시겠어요?</span>
+            </div>
+            </form>
+
+            <button type="button" class="btn btn-outline-primary margintop20">영화 등록</button>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- ... contents ... -->
+  </div>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <%include file="common_script.html"/>
+
+  </body>
+</html>
