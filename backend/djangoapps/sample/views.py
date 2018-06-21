@@ -33,7 +33,7 @@ def sample(request):
 
     print("-------------------------> DEBUG [s]")
     common_sample()
-    print(settings.TIME_ZONE)
+    print(settings.FILE_UPLOAD)
     print("-------------------------> DEBUG [e]")
 
     return render(request, 'sample/sample.html', context)

@@ -26,10 +26,11 @@ create table iriyong_movie(
 
 create table iriyong_file_store(
 	id int primary key auto_increment,
-    file_origin_name varchar(100),
-    file_encode_name varchar(100),
+    file_origin_name varchar(300),
+    file_encode_name varchar(300),
     file_ext varchar(100),
-    file_path varchar(100),
+    file_path varchar(300),
+    file_size varchar(300),
     delete_yn varchar(10) default 'N',
     regist_date datetime default now()
 );

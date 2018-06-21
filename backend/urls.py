@@ -12,6 +12,9 @@ urlpatterns = [
     url('apiChecklistDelete$', MainViews.apiChecklistDelete, name='apiChecklistDelete'),
     url('apiChecklistComplete$', MainViews.apiChecklistComplete, name='apiChecklistComplete'),
 
+    url('apiMovieCreate$', MainViews.apiMovieCreate, name='apiMovieCreate'),
+    url('fileUpload$', MainViews.fileUpload, name='fileUpload'),
+
     url('checklist$', MainViews.checklist, name='checklist'),
     url('checklist$', MainViews.checklist, name='checklist'),
 

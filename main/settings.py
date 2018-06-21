@@ -101,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+FILE_UPLOAD = BASE_DIR + '/backend/static/backend/upload/'
+
 DATABASAE_OPTIONS = {'charset':'utf8'}
 LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
