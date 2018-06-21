@@ -19,7 +19,7 @@
 }
 
 .post-sum{
-  width: 140px;
+  width: 100%;
 }
 
 .subdisplay{
@@ -38,4 +38,12 @@
 
 .pagerLink{
   text-decoration: none !important;
+}
+
+.marginleft5{
+    margin-left: 5px;
+}
+
+.margintop10{
+  margin-top: 10px;
 }

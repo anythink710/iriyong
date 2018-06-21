@@ -12,25 +12,53 @@
 
           <div class="card" style="margin-bottom: 15px;">
             <div class="card-body">
-              체크리스트 (チェックリスト) <button type="button" class="btn btn-outline-primary floatright">추가</button>
+              체크리스트 (チェックリスト) <button onclick="addingClick()" type="button" class="btn btn-outline-primary floatright">추가</button>
             </div>
           </div>
           <div class="card" style="padding:15px;">
 
             <div class="post-title">앞으로 해야할 일</div>
             <small class="marginbottom15">これからすべきこと</small>
+
+            <div class="adding-layer"></div>
+            <div class="plus-layer"></div>
+
+            <!--
             <div class="alert alert-secondary" role="alert">
-              대만 여행 같이 가기 <button type="button" class="btn btn-outline-success floatright">체크</button>
+              <input type="text" style="width: 100%;">
+              <div class="margintop10">
+                <button onclick="checkClick()" type="button" class="btn btn-outline-primary floatright marginleft5">등록</button>
+              </div>
             </div>
-            <div class="alert alert-secondary" role="alert">
-              가고시마에서 시로쿠마 먹기 <button type="button" class="btn btn-outline-success floatright">체크</button>
+            -->
+
+            <div id="post3" class="alert alert-secondary" role="alert">
+              대만 여행 같이 가기
+              <div class="margintop10">
+                <button onclick="checkClick('post3')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>
+                <button onclick="deleteClick('post3')" type="button" class="btn btn-outline-danger floatright">삭제</button>
+              </div>
             </div>
-            <div class="alert alert-secondary" role="alert">
-              방탈출카페 탈출하기 <button type="button" class="btn btn-outline-success floatright">체크</button>
+            <div id="post2" class="alert alert-secondary" role="alert">
+              가고시마에서 시로쿠마 먹기
+              <div class="margintop10">
+                <button onclick="checkClick('post2')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>
+                <button onclick="deleteClick('post2')" type="button" class="btn btn-outline-danger floatright">삭제</button>
+              </div>
+            </div>
+            <div id="post1" class="alert alert-secondary" role="alert">
+              방탈출카페 탈출하기
+              <div class="margintop10">
+                <button onclick="checkClick('post1')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>
+                <button onclick="deleteClick('post1')" type="button" class="btn btn-outline-danger floatright">삭제</button>
+              </div>
             </div>
 
             <div class="post-title">이미 같이 했어요</div>
             <small class="marginbottom15">すでにようました</small>
+
+            <div class="check-layer"></div>
+
             <div class="alert alert-success" role="alert">
               이푸도 라멘 먹기 (2018.04.01)
             </div>
@@ -49,9 +77,7 @@
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
 
-  <script src="/static/backend/js/bootstrap.min.js"></script>
-  <script src="/static/backend/js/scripts.js"></script>
-  <script src="/static/backend/js/main.js"></script>
+  <%include file="common_script.html"/>
 
   </body>
 </html>
