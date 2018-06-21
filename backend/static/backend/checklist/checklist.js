@@ -15,14 +15,20 @@ function addingClick(){
 }
 
 function checkClick(hello){
+  var d = new Date();
+  var curr_date = d.getDate();
+  var curr_month = d.getMonth() + 1; //Months are zero based
+  var curr_year = d.getFullYear();
 
   var content = $('#' + hello).text().split("체크")[0].trim();
 
   var html = '<div class="alert alert-success" role="alert">'+
-             content + '(2018.04.01)'+
+             content + '(' + curr_year + "." + curr_month + "." + curr_date + ')'+
              '</div>';
 
+  $('.check-layer').hide();
   $('.check-layer').prepend(html);
+  $('.check-layer').slideToggle();
   $('#' + hello).remove()
 }
 
@@ -41,6 +47,9 @@ function submitClick(){
              '</div>'+
              '</div>';
 
+   $('.plus-layer').hide();
    $('.plus-layer').prepend(html);
+   $('.plus-layer').slideToggle();
+
    $('.adding-layer').html("");
 }
