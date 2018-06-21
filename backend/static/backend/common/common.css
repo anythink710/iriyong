@@ -1,0 +1,41 @@
+.hanna {
+  font-family: 'Hanna', serif;
+}
+
+.black {
+  color: black
+}
+
+.post-title{
+  font-weight: bold;
+}
+
+.floatright{
+  float:right
+}
+
+.marginbottom15{
+  margin-bottom: 15px;
+}
+
+.post-sum{
+  width: 140px;
+}
+
+.subdisplay{
+  font-size: 80%;
+  color: #aaaaaa;
+}
+
+.fontsize90{
+  font-size: 90%;
+}
+
+.memory{
+  width: 300px;
+  margin: auto;
+}
+
+.pagerLink{
+  text-decoration: none !important;
+}

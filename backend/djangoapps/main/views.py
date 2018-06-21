@@ -11,7 +11,7 @@ from django.conf import settings
 from backend.djangoapps.common.views import common_sample
 from backend.djangoapps.common.views import dictfetchall
 
-def sample(request):
+def index(request):
 
     """
     making logic
@@ -31,10 +31,20 @@ def sample(request):
     context = {}
     context['sample_key'] = 'sample_val'
 
-    print("-------------------------> DEBUG [s]")
-    common_sample()
-    print(settings.TIME_ZONE)
-    print("-------------------------> DEBUG [e]")
+    return render(request, 'backend/index.html', context)
 
-    return render(request, 'sample/sample.html', context)
-    #return JsonResponse({'a':'b'})
+def checklist(request):
+    context = {}
+    return render(request, 'backend/checklist.html', context)
+
+def memory(request):
+    context = {}
+    return render(request, 'backend/memory.html', context)
+
+def movie(request):
+    context = {}
+    return render(request, 'backend/movie.html', context)
+
+def movieDetail(request):
+    context = {}
+    return render(request, 'backend/movieDetail.html', context)
