@@ -4,3 +4,4 @@
 /media
 /venv
 /backend/static/backend/upload
+/main/settings.py
