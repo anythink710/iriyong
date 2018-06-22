@@ -31,7 +31,7 @@ function movieSubmit(){
   })
   .done(function( data ) {
     if(data.return == 'success'){
-      alert("success");
+      location.reload();
     }
     else{
       alert('error');
