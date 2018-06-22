@@ -72,7 +72,12 @@ def checklist(request):
     context = {}
     context['ok_list'] = ok_list
     context['no_list'] = no_list
-    context['max_id'] = int(max_id[0][0]) + 1
+
+    if max_id[0][0] == None:
+        context['max_id'] = 0
+    else:
+        context['max_id'] = int(max_id[0][0]) + 1
+
     return render(request, 'backend/checklist.html', context)
 
 def apiChecklistCreate(request):
