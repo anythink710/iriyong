@@ -48,7 +48,8 @@ def checklist(request):
     with connections['default'].cursor() as cur:
         query = '''
             select id, content,
-            DATE_FORMAT(regist_date, "%Y.%c.%e") as regist_date
+            DATE_FORMAT(regist_date, "%Y.%c.%e") as regist_date,
+            locate('♡',content) as loc
             FROM iriyong_todo
             where complete = 'N'
             and delete_yn = 'N'

@@ -69,13 +69,26 @@ function submitClick(){
   var max_id = $('.max_id').text();
   var csrf_token = $('.csrf_token').text();
 
-  var html = '<div id="post'+max_id+'" style="height: 100px;" class="alert alert-secondary" role="alert">'+
-             content +
-             '<div class="margintop10">'+
-             '<button onclick="checkClick(\'post'+max_id+'\')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>'+
-             '<button onclick="deleteClick(\'post'+max_id+'\')" type="button" class="btn btn-outline-danger floatright">삭제</button>'+
-             '</div>'+
-             '</div>';
+  console.log(content.indexOf('♡'));
+  if(content.indexOf('♡') != -1){
+    var html = '<div id="post'+max_id+'" style="height: 100px;" class="alert alert-danger" role="alert">'+
+               content +
+               '<div class="margintop10">'+
+               '<button onclick="checkClick(\'post'+max_id+'\')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>'+
+               '<button onclick="deleteClick(\'post'+max_id+'\')" type="button" class="btn btn-outline-danger floatright">삭제</button>'+
+               '</div>'+
+               '</div>';
+  }
+  else{
+    var html = '<div id="post'+max_id+'" style="height: 100px;" class="alert alert-secondary" role="alert">'+
+               content +
+               '<div class="margintop10">'+
+               '<button onclick="checkClick(\'post'+max_id+'\')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>'+
+               '<button onclick="deleteClick(\'post'+max_id+'\')" type="button" class="btn btn-outline-danger floatright">삭제</button>'+
+               '</div>'+
+               '</div>';
+  }
+
 
    $.post( "/apiChecklistCreate", {
      content: content,

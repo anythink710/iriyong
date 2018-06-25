@@ -27,7 +27,12 @@
             <div class="plus-layer"></div>
 
             % for item in no_list:
-            <div id="post${item[0]}" class="alert alert-secondary" role="alert">
+              % if item[3] != 0:
+                <div id="post${item[0]}" class="alert alert-danger" role="alert">
+              % else:
+                <div id="post${item[0]}" class="alert alert-secondary" role="alert">
+              % endif
+
               ${item[1]}
               <div class="margintop10">
                 <button onclick="checkClick('post${item[0]}')" type="button" class="btn btn-outline-success floatright marginleft5">체크</button>
