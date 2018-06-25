@@ -123,6 +123,12 @@ def apiChecklistComplete(request):
 
     return JsonResponse({'return':'success'})
 
+def shift(request):
+
+    context = {}
+
+    return render(request, 'backend/shift.html', context)
+
 @csrf_exempt
 def apiMovieCreate(request):
 

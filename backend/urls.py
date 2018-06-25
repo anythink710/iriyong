@@ -18,6 +18,8 @@ urlpatterns = [
     url('checklist$', MainViews.checklist, name='checklist'),
     url('checklist$', MainViews.checklist, name='checklist'),
 
+    url('shift$', MainViews.shift, name='shift'),
+
     url('memory$', MainViews.memory, name='memory'),
 
     url('movie$', MainViews.movie, name='movie'),
