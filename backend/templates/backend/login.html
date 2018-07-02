@@ -51,23 +51,37 @@
 	<script src="/static/backend/login/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/static/backend/login/vendor/select2/select2.min.js"></script>
 	<script src="/static/backend/login/js/main.js"></script>
+	<script src="/static/backend/login/vendor/sw2.js"></script>
 
 	<script>
+	function login(){
+		var secretKey = $('.secretKeyInput').val();
+		$.post( "/login", { secretKey: secretKey })
+		.done(function( data ) {
+			if(data.return == 'success'){
+				url = "/index";
+				$( location ).attr("href", url);
+			}
+			else if(data.return == 'fail'){
+				swal({
+					type: 'error',
+					title: '너 누구야?',
+					text: '여기는 아무나 들어오면 안돼!',
+				});
+			}
+
+		});
+	}
+
 	$( document ).ready(function() {
+		$("input[name=pass]").keydown(function (key) {
+			if(key.keyCode == 13){
+				login()
+			}
+		});
 
 		$('.secretKeyBtn').click(function() {
-  		var secretKey = $('.secretKeyInput').val();
-			$.post( "/login", { secretKey: secretKey })
-		  .done(function( data ) {
-				if(data.return == 'success'){
-					url = "/index";
-		      $( location ).attr("href", url);
-				}
-				else if(data.return == 'fail'){
-						alert( "fail" );
-				}
-
-		  });
+			login();
 		});
 	});
 	</script>
