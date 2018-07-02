@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +14,39 @@ from django.conf import settings
 from backend.djangoapps.common.views import common_sample
 from backend.djangoapps.common.views import dictfetchall
 
+from backend.models import SecretKey
+
+def sessionCheck(request):
+    if 'auth' in request.session:
+        print("session is ok")
+        return 'authSuccess'
+    elif 'auth' not in request.session:
+        print("session is no")
+        return 'authFail'
+
+
+@csrf_exempt
+def login(request):
+
+    if request.is_ajax():
+        secretKey = request.POST.get('secretKey')
+        print("secretKey = ", secretKey)
+
+        auth = SecretKey.objects.filter(secret_key=secretKey)
+        print("len(auth) = ", len(auth))
+
+        if len(auth) == 0:
+            return JsonResponse({'return':'fail'})
+        else:
+            request.session['auth'] = 'true'
+            return JsonResponse({'return':'success'})
+
+    return render(request, 'backend/login.html')
+
 def index(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     """
     making logic
@@ -36,6 +69,9 @@ def index(request):
     return render(request, 'backend/index.html', context)
 
 def checklist(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     with connections['default'].cursor() as cur:
         query = '''
@@ -82,6 +118,9 @@ def checklist(request):
     return render(request, 'backend/checklist.html', context)
 
 def apiChecklistCreate(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     content = request.POST.get('content')
 
@@ -95,6 +134,9 @@ def apiChecklistCreate(request):
     return JsonResponse({'return':'success'})
 
 def apiChecklistDelete(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     boardId = request.POST.get('boardId')
     boardId = boardId.replace('post','')
@@ -110,6 +152,9 @@ def apiChecklistDelete(request):
     return JsonResponse({'return':'success'})
 
 def apiChecklistComplete(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     boardId = request.POST.get('boardId')
     boardId = boardId.replace('post','')
@@ -125,6 +170,9 @@ def apiChecklistComplete(request):
     return JsonResponse({'return':'success'})
 
 def shift(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     context = {}
 
@@ -132,6 +180,9 @@ def shift(request):
 
 @csrf_exempt
 def apiMovieCreate(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     movie_name = request.POST.get('movie_name')
     movie_subject = request.POST.get('movie_subject')
@@ -184,10 +235,16 @@ def apiMovieCreate(request):
 
 
 def memory(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
     context = {}
     return render(request, 'backend/memory.html', context)
 
 def admin(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
     context = {}
     return render(request, 'backend/admin.html', context)
 
@@ -244,6 +301,9 @@ def fileUpload(request):
     return JsonResponse({'a':'b'})
 
 def movie(request):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     with connections['default'].cursor() as cur:
         query = '''
@@ -270,6 +330,9 @@ def movie(request):
     return render(request, 'backend/movie.html', context)
 
 def movieDetail(request, pageId):
+    result = sessionCheck(request)
+    if result == 'authFail':
+        return redirect('/login')
 
     print("pageId = ", pageId)
 

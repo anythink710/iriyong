@@ -27,5 +27,7 @@ urlpatterns = [
 
     url('admin$', MainViews.admin, name='admin'),
 
-    url('$', MainViews.index, name='index'),
+    url('index$', MainViews.index, name='index'),
+
+    url('$', MainViews.login, name='login'),
 ]
