@@ -3,9 +3,15 @@ from django.conf.urls import url
 
 from .djangoapps.common import views as CommonViews
 from .djangoapps.main import views as MainViews
+from .djangoapps.kakao import views as KakaoViews
 
 urlpatterns = [
-    # main-url
+
+    # kakao url
+    url('keyboard$', KakaoViews.keyboard),
+    url('message$', KakaoViews.answer),
+
+    # main url
     url('checklist$', MainViews.checklist, name='checklist'),
 
     url('apiChecklistCreate$', MainViews.apiChecklistCreate, name='apiChecklistCreate'),
