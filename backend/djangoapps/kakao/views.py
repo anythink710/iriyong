@@ -9,7 +9,7 @@ def keyboard(request):
 
     return JsonResponse({
         'type':'buttons',
-        'buttons':['오늘','내일']
+        'buttons':['후쿠오카 날씨','오빠 만나는 날']
     })
 
 @csrf_exempt
@@ -19,8 +19,8 @@ def answer(request):
     received_json_data = json.loads(json_str)
     datacontent = received_json_data['content']
 
-    if datacontent == '오늘':
-        today = "오늘 급식"
+    if datacontent == '후쿠오카 날씨':
+        today = "아직 만들고 있는 중이에요! 언제 비올지 알려드릴게요 ^^"
 
         return JsonResponse({
                 'message': {
@@ -33,8 +33,8 @@ def answer(request):
 
             })
 
-    elif datacontent == '내일':
-        tomorrow = "내일 급식"
+    elif datacontent == '오빠 만나는 날':
+        tomorrow = "아직 만들고 있는 중이에요!"
 
         return JsonResponse({
                 'message': {
