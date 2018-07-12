@@ -28,7 +28,7 @@ def answer(request):
                 },
                 'keyboard': {
                     'type':'buttons',
-                    'buttons':['오늘','내일']
+                    'buttons':['후쿠오카 날씨','오빠 만나는 날']
                 }
 
             })
@@ -42,7 +42,7 @@ def answer(request):
                 },
                 'keyboard': {
                     'type':'buttons',
-                    'buttons':['오늘','내일']
+                    'buttons':['후쿠오카 날씨','오빠 만나는 날']
                 }
 
             })
