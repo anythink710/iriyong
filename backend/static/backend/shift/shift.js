@@ -23,10 +23,10 @@ function shiftSubmit(){
             $('#post' + i).val('10:00 ~ 20:00');
           }
           else if(post == 'F'){
-            $('#post' + i).val('09:00 ~ 20:00');
+            $('#post' + i).val('12:15 ~ 21:15');
           }
           else if(post == 'G'){
-            $('#post' + i).val('09:00 ~ 21:00');
+            $('#post' + i).val('09:00 ~ 20:00');
           }
           else if(post == 'H'){
             $('#post' + i).val('10:00 ~ 21:00');
